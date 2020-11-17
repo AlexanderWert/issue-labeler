@@ -105,7 +105,7 @@ function getIssueBody(): string | undefined {
     return '_';
   }
 
-  return issue.body;
+  return issue.body || '_';
 }
 
 function regexifyConfigPath(configPath: string, version: string) {
