@@ -89,7 +89,11 @@ async function run() {
 function getIssueNumber(): number | undefined {
   const issue = github.context.payload.issue;
   if (!issue) {
-    return;
+    const pullRequest = github.context.payload.pull_request;
+    if (!pullRequest) {
+      return;
+    }
+    return pullRequest.number;
   }
 
   return issue.number;
@@ -98,7 +102,7 @@ function getIssueNumber(): number | undefined {
 function getIssueBody(): string | undefined {
   const issue = github.context.payload.issue;
   if (!issue) {
-    return;
+    return '_';
   }
 
   return issue.body;
