@@ -100,6 +100,8 @@ function getIssueNumber(): number | undefined {
 }
 
 function getIssueBody(): string | undefined {
+  console.log(JSON.stringify(github.context.payload));
+
   const issue = github.context.payload.issue;
   if (!issue) {
     return '_';
